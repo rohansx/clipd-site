@@ -29,189 +29,78 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
-{/* Cat hugging a clipboard — line-art style, light Catppuccin palette */}
-const catLogo = (
-  <svg viewBox="0 0 80 80" className="inline-block w-8 h-8 align-middle" style={{ verticalAlign: '-0.2em' }}>
-    {/* Clipboard board */}
-    <rect x="30" y="18" width="28" height="38" rx="3" fill="#9399b2" stroke="#bac2de" strokeWidth="1.5"/>
-    {/* Clipboard clip */}
-    <rect x="38" y="15" width="12" height="6" rx="2" fill="#bac2de"/>
-    <rect x="40" y="13" width="8" height="4" rx="2" fill="#89b4fa"/>
-    {/* Clipboard lines */}
-    <line x1="36" y1="30" x2="52" y2="30" stroke="#7f849c" strokeWidth="1.2"/>
-    <line x1="36" y1="35" x2="50" y2="35" stroke="#7f849c" strokeWidth="1.2"/>
-    <line x1="36" y1="40" x2="48" y2="40" stroke="#7f849c" strokeWidth="1.2"/>
-    <line x1="36" y1="45" x2="46" y2="45" stroke="#7f849c" strokeWidth="1.2"/>
-
-    {/* Cat body — draped over the clipboard */}
-    <ellipse cx="28" cy="52" rx="18" ry="14" fill="#a6adc8"/>
-
-    {/* Cat tail — curving up on the right */}
-    <path d="M44 56 Q56 54 58 42 Q59 36 56 32" fill="none" stroke="#bac2de" strokeWidth="3" strokeLinecap="round"/>
-    <circle cx="55.5" cy="31.5" r="2" fill="#89b4fa" opacity="0.6"/>
-
-    {/* Cat head */}
-    <ellipse cx="22" cy="38" rx="14" ry="12" fill="#a6adc8"/>
-
-    {/* Cat ears */}
-    <path d="M12 30 L8 16 L18 26 Z" fill="#a6adc8" stroke="#bac2de" strokeWidth="0.8"/>
-    <path d="M32 30 L36 16 L26 26 Z" fill="#a6adc8" stroke="#bac2de" strokeWidth="0.8"/>
-    {/* Inner ears */}
-    <path d="M13 28 L10 19 L17 26 Z" fill="#f5c2e7" opacity="0.6"/>
-    <path d="M31 28 L34 19 L27 26 Z" fill="#f5c2e7" opacity="0.6"/>
-
-    {/* Eyes — closed/happy (^_^) */}
-    <path d="M16 36 Q18 33 20 36" fill="none" stroke="#1e1e2e" strokeWidth="1.8" strokeLinecap="round"/>
-    <path d="M24 36 Q26 33 28 36" fill="none" stroke="#1e1e2e" strokeWidth="1.8" strokeLinecap="round"/>
-
-    {/* Nose */}
-    <path d="M21 39 L22 40.5 L23 39 Z" fill="#f38ba8"/>
-
-    {/* Mouth */}
-    <path d="M22 40.5 Q20 42.5 18.5 42" fill="none" stroke="#585b70" strokeWidth="0.8" strokeLinecap="round"/>
-    <path d="M22 40.5 Q24 42.5 25.5 42" fill="none" stroke="#585b70" strokeWidth="0.8" strokeLinecap="round"/>
-
-    {/* Whiskers */}
-    <line x1="2" y1="37" x2="13" y2="38.5" stroke="#9399b2" strokeWidth="0.7" opacity="0.6"/>
-    <line x1="3" y1="41" x2="13" y2="40.5" stroke="#9399b2" strokeWidth="0.7" opacity="0.6"/>
-    <line x1="31" y1="38.5" x2="40" y2="37" stroke="#9399b2" strokeWidth="0.7" opacity="0.6"/>
-    <line x1="31" y1="40.5" x2="40" y2="41" stroke="#9399b2" strokeWidth="0.7" opacity="0.6"/>
-
-    {/* Front paws — hugging the clipboard */}
-    <ellipse cx="18" cy="56" rx="5" ry="3" fill="#bac2de" transform="rotate(-15 18 56)"/>
-    <ellipse cx="36" cy="54" rx="5" ry="3" fill="#bac2de" transform="rotate(15 36 54)"/>
-    {/* Paw pads */}
-    <circle cx="16" cy="56" r="1" fill="#f5c2e7" opacity="0.6"/>
-    <circle cx="18.5" cy="57" r="1" fill="#f5c2e7" opacity="0.6"/>
-    <circle cx="37" cy="54" r="1" fill="#f5c2e7" opacity="0.6"/>
-    <circle cx="34.5" cy="55" r="1" fill="#f5c2e7" opacity="0.6"/>
-  </svg>
-);
-
-function HeroTerminal() {
-  const lines = [
-    { delay: 0.6, parts: [
-      { text: "❯ ", cls: "text-[#a6e3a1]" },
-      { text: "clipd status", cls: "text-[#cdd6f4]" },
-    ]},
-    { delay: 1.0, parts: [
-      { text: "  daemon  ", cls: "text-[#6c7086]" },
-      { text: "running", cls: "text-[#a6e3a1]" },
-      { text: "  pid 4821", cls: "text-[#585b70]" },
-    ]},
-    { delay: 1.2, parts: [
-      { text: "  slots   ", cls: "text-[#6c7086]" },
-      { text: "9 active", cls: "text-[#89b4fa]" },
-    ]},
-    { delay: 1.4, parts: [
-      { text: "  history ", cls: "text-[#6c7086]" },
-      { text: "2,847 items", cls: "text-[#cba6f7]" },
-    ]},
-    { delay: 1.6, parts: [
-      { text: "  ai      ", cls: "text-[#6c7086]" },
-      { text: "onnx ready", cls: "text-[#fab387]" },
-    ]},
-    { delay: 2.2, parts: [] },
-    { delay: 2.4, parts: [
-      { text: "❯ ", cls: "text-[#a6e3a1]" },
-      { text: "clipd copy ", cls: "text-[#cdd6f4]" },
-      { text: "--slot 1", cls: "text-[#89b4fa]" },
-    ]},
-    { delay: 2.8, parts: [
-      { text: "  ✓ ", cls: "text-[#a6e3a1]" },
-      { text: "copied to slot 1", cls: "text-[#a6adc8]" },
-    ]},
-    { delay: 3.4, parts: [
-      { text: "❯ ", cls: "text-[#a6e3a1]" },
-      { text: "clipd paste ", cls: "text-[#cdd6f4]" },
-      { text: "--slot 1", cls: "text-[#89b4fa]" },
-    ]},
-    { delay: 3.8, parts: [
-      { text: "  ✓ ", cls: "text-[#a6e3a1]" },
-      { text: "pasted from slot 1", cls: "text-[#a6adc8]" },
-    ]},
-    { delay: 4.4, parts: [
-      { text: "❯ ", cls: "text-[#a6e3a1]" },
-      { text: "clipd search ", cls: "text-[#cdd6f4]" },
-      { text: "--last 1h", cls: "text-[#89b4fa]" },
-    ], cursor: true },
-  ];
-
+{/* Cat hugging clipboard — clear outlined line-art, light on dark */}
+function ClipCat({ size = 32, className = "" }: { size?: number; className?: string }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.96 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{ delay: 1.0, duration: 0.8, ease: "easeOut" }}
-      className="w-full"
-    >
-      <div
-        className="bg-[#1e1e2e] border border-[#313244] rounded-[10px] overflow-hidden"
-        style={{ boxShadow: "0 0 0 1px #313244, 0 32px 100px rgba(0,0,0,0.6), 0 0 80px rgba(137,180,250,0.05)" }}
-      >
-        {/* Title bar */}
-        <div className="flex items-center gap-2 px-5 py-2.5 border-b border-[#313244] bg-[#181825]">
-          <div className="flex gap-1.5">
-            <span className="w-[11px] h-[11px] rounded-full bg-[#f38ba8] opacity-70" />
-            <span className="w-[11px] h-[11px] rounded-full bg-[#fab387] opacity-70" />
-            <span className="w-[11px] h-[11px] rounded-full bg-[#a6e3a1] opacity-70" />
-          </div>
-          <span className="font-mono text-[11px] text-[#585b70] ml-2 flex-1 text-center">
-            clipd — daemon
-          </span>
-        </div>
-        {/* Terminal content */}
-        <div className="px-6 py-5 font-mono text-[13px] leading-[2]">
-          {lines.map((line, i) => {
-            if (line.parts.length === 0) {
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: line.delay, duration: 0.2 }}
-                >
-                  &nbsp;
-                </motion.div>
-              );
-            }
-            return (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, x: -4 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: line.delay, duration: 0.3 }}
-              >
-                {line.parts.map((part, j) => (
-                  <span key={j} className={part.cls}>{part.text}</span>
-                ))}
-                {"cursor" in line && line.cursor && (
-                  <span
-                    className="inline-block w-[7px] h-4 bg-[#fab387] rounded-[1px] ml-0.5 align-text-bottom"
-                    style={{ animation: "blink 1s step-end infinite" }}
-                  />
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
-        {/* Bottom status bar */}
-        <div className="flex items-center justify-between px-5 py-2 border-t border-[#313244] bg-[#181825]">
-          <span className="font-mono text-[10px] text-[#585b70]">v0.1.0-alpha</span>
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5 font-mono text-[10px] text-[#a6e3a1]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#a6e3a1] inline-block" />
-              daemon
-            </span>
-            <span className="flex items-center gap-1.5 font-mono text-[10px] text-[#89b4fa]">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#89b4fa] inline-block" />
-              9 slots
-            </span>
-          </div>
-        </div>
-      </div>
-    </motion.div>
+    <svg viewBox="0 0 80 72" width={size} height={size * 0.9} className={className}>
+      {/* Clipboard board */}
+      <rect x="32" y="12" width="26" height="36" rx="2.5"
+        fill="none" stroke="#cdd6f4" strokeWidth="2"/>
+      {/* Clipboard clip at top */}
+      <rect x="39" y="9" width="12" height="7" rx="1.5"
+        fill="none" stroke="#89b4fa" strokeWidth="1.8"/>
+      {/* Clipboard lines */}
+      <line x1="38" y1="25" x2="52" y2="25" stroke="#6c7086" strokeWidth="1.3" strokeLinecap="round"/>
+      <line x1="38" y1="30" x2="50" y2="30" stroke="#6c7086" strokeWidth="1.3" strokeLinecap="round"/>
+      <line x1="38" y1="35" x2="47" y2="35" stroke="#6c7086" strokeWidth="1.3" strokeLinecap="round"/>
+      {/* Check mark on clipboard */}
+      <path d="M38 40 L41 43 L47 37" fill="none" stroke="#a6e3a1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+
+      {/* Cat body — round, sitting behind clipboard */}
+      <ellipse cx="30" cy="52" rx="20" ry="14"
+        fill="none" stroke="#cdd6f4" strokeWidth="2"/>
+
+      {/* Cat tail — curling up on the right */}
+      <path d="M48 54 Q58 50 60 40 Q61 34 57 28"
+        fill="none" stroke="#cdd6f4" strokeWidth="2" strokeLinecap="round"/>
+      {/* Tail tip accent */}
+      <circle cx="56.5" cy="28" r="2" fill="#b4befe" opacity="0.7"/>
+
+      {/* Cat head */}
+      <ellipse cx="24" cy="36" rx="15" ry="13"
+        fill="none" stroke="#cdd6f4" strokeWidth="2"/>
+      {/* Head fill to cover clipboard line behind */}
+      <ellipse cx="24" cy="36" rx="14" ry="12" fill="#11111b"/>
+
+      {/* Cat ears — triangles */}
+      <path d="M13 28 L7 13 L20 24" fill="#11111b" stroke="#cdd6f4" strokeWidth="2" strokeLinejoin="round"/>
+      <path d="M35 28 L41 13 L28 24" fill="#11111b" stroke="#cdd6f4" strokeWidth="2" strokeLinejoin="round"/>
+      {/* Inner ear pink */}
+      <path d="M13 25 L9 16 L18 23" fill="none" stroke="#f5c2e7" strokeWidth="1.2" strokeLinejoin="round"/>
+      <path d="M35 25 L39 16 L30 23" fill="none" stroke="#f5c2e7" strokeWidth="1.2" strokeLinejoin="round"/>
+
+      {/* Eyes — happy closed arcs ^_^ */}
+      <path d="M17 34 Q19.5 30 22 34" fill="none" stroke="#89b4fa" strokeWidth="2" strokeLinecap="round"/>
+      <path d="M26 34 Q28.5 30 31 34" fill="none" stroke="#89b4fa" strokeWidth="2" strokeLinecap="round"/>
+
+      {/* Nose — small triangle */}
+      <path d="M23 37.5 L24 39 L25 37.5" fill="#f38ba8" stroke="#f38ba8" strokeWidth="0.5" strokeLinejoin="round"/>
+
+      {/* Mouth — w shape */}
+      <path d="M24 39 Q22 41.5 20 41" fill="none" stroke="#cdd6f4" strokeWidth="1" strokeLinecap="round"/>
+      <path d="M24 39 Q26 41.5 28 41" fill="none" stroke="#cdd6f4" strokeWidth="1" strokeLinecap="round"/>
+
+      {/* Whiskers */}
+      <line x1="3" y1="34" x2="14" y2="36" stroke="#cdd6f4" strokeWidth="0.8" opacity="0.5"/>
+      <line x1="4" y1="39" x2="14" y2="38.5" stroke="#cdd6f4" strokeWidth="0.8" opacity="0.5"/>
+      <line x1="34" y1="36" x2="44" y2="34" stroke="#cdd6f4" strokeWidth="0.8" opacity="0.5"/>
+      <line x1="34" y1="38.5" x2="44" y2="39" stroke="#cdd6f4" strokeWidth="0.8" opacity="0.5"/>
+
+      {/* Front paws — hugging clipboard */}
+      <ellipse cx="18" cy="56" rx="5.5" ry="3.5"
+        fill="none" stroke="#cdd6f4" strokeWidth="1.5" transform="rotate(-10 18 56)"/>
+      <ellipse cx="40" cy="53" rx="5.5" ry="3.5"
+        fill="none" stroke="#cdd6f4" strokeWidth="1.5" transform="rotate(10 40 53)"/>
+      {/* Paw pad details */}
+      <circle cx="16.5" cy="56.5" r="1" fill="#f5c2e7" opacity="0.5"/>
+      <circle cx="19" cy="57.5" r="1" fill="#f5c2e7" opacity="0.5"/>
+      <circle cx="41" cy="53.5" r="1" fill="#f5c2e7" opacity="0.5"/>
+      <circle cx="38.5" cy="54.5" r="1" fill="#f5c2e7" opacity="0.5"/>
+    </svg>
   );
 }
+
+export { ClipCat };
 
 export default function Hero() {
   const flipWords = ["Atuin", "tmux", "fzf"];
@@ -254,7 +143,7 @@ export default function Hero() {
               className="font-mono text-[14px] text-[#6c7086] mb-10 flex items-center gap-2.5"
             >
               <span className="text-[#a6e3a1]">❯</span>
-              <span>{catLogo}</span>
+              <ClipCat size={28} className="inline-block" />
               <span className="text-[#cdd6f4] font-bold text-[15px]">clipd</span>
               <span>--version // v0.1.0-alpha</span>
             </motion.div>
@@ -332,9 +221,21 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right column — terminal preview */}
-          <div className="hidden lg:block">
-            <HeroTerminal />
+          {/* Right column — large cat mascot */}
+          <div className="hidden lg:flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ delay: 1.0, duration: 1.0, ease: "easeOut" }}
+              className="relative"
+            >
+              {/* Glow behind the cat */}
+              <div
+                className="absolute inset-0 -m-16 rounded-full blur-3xl opacity-[0.07]"
+                style={{ background: "radial-gradient(circle, #89b4fa 0%, #b4befe 40%, transparent 70%)" }}
+              />
+              <ClipCat size={360} className="relative z-10 opacity-90" />
+            </motion.div>
           </div>
         </div>
       </div>

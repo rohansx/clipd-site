@@ -35,13 +35,6 @@ export default function CTA() {
           transition={{ delay: 0.3, duration: 0.8, ease: "easeInOut" }}
           className="text-center"
         >
-          <div className="font-mono text-xs text-[#6c7086] mb-4 flex items-center justify-center gap-2">
-            <span className="text-[#585b70]">{"//"}</span>
-            <span className="text-[#cba6f7]">fn</span>
-            <span className="text-[#a6e3a1]">main</span>
-            <span className="text-[#6c7086]">()</span>
-          </div>
-
           <h2 className="font-mono text-[clamp(30px,4.5vw,48px)] font-bold tracking-[-2px] text-[#cdd6f4] mb-5">
             Stop switching tabs.
           </h2>
