@@ -61,7 +61,7 @@ export default function CTA() {
               <div className="flex items-center gap-2.5 px-5 py-3 w-full justify-center">
                 <span className="text-[#a6e3a1]">$</span>
                 <span className="text-[#89b4fa]">brew install</span>
-                <span className="text-[#cdd6f4]">🐱 clipd</span>
+                <span className="text-[#cdd6f4] font-bold">clipd</span>
                 <CopyBtn text="brew install clipd" />
               </div>
             </MovingBorderButton>

@@ -61,7 +61,7 @@ export default function DemoTerminal() {
           <div className="font-mono text-xs text-[#6c7086] mb-4 flex items-center justify-center gap-2">
             <span className="text-[#585b70]">{"//"}</span>
             <span className="text-[#cba6f7]">fn</span>
-            <span className="text-[#a6e3a1]">🐱 demo</span>
+            <span className="text-[#a6e3a1]">demo</span>
             <span className="text-[#6c7086]">()</span>
           </div>
           <h2 className="font-mono text-[clamp(26px,3.8vw,40px)] font-bold tracking-[-1.5px] text-[#cdd6f4] mb-3">
@@ -79,7 +79,7 @@ export default function DemoTerminal() {
         >
           <div className="flex items-center gap-2 px-4 py-2.5 border-b border-[#313244] bg-[#181825]">
             <span className="font-mono text-[11px] text-[#6c7086] ml-2 flex-1 text-center">
-              🐱 clipd — multi-slot demo
+              clipd — multi-slot demo
             </span>
           </div>
           <div className="p-6 font-mono text-[13px] leading-[2] min-h-[260px]">
