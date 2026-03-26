@@ -1,0 +1,90 @@
+---
+---
+<section id="architecture" class="py-24 border-b border-[#313244]">
+  <div class="max-w-[1100px] mx-auto px-8">
+    <div class="text-center mb-16 fade-in">
+      <div class="font-mono text-xs text-[#6c7086] mb-4 flex items-center justify-center gap-2">
+        <span class="text-[#585b70]">//</span>
+        <span class="text-[#cba6f7]">mod</span>
+        <span class="text-[#a6e3a1]">architecture</span>
+      </div>
+      <h2 class="font-mono text-[clamp(26px,3.8vw,40px)] font-bold tracking-[-1.5px] text-[#cdd6f4] mb-3">
+        Daemon + thin clients.
+      </h2>
+      <p class="text-sm text-[#a6adc8] max-w-[500px] mx-auto">
+        One Rust binary runs in the background. Everything else talks to it.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 fade-in">
+      <!-- ASCII Diagram -->
+      <div class="bg-[#1e1e2e] border border-[#313244] rounded-[10px] overflow-hidden">
+        <div class="flex items-center gap-2 px-4 py-2.5 border-b border-[#313244] bg-[#181825] font-mono text-[11px] text-[#6c7086]">
+          <span class="text-[#a6e3a1]">●</span> arch.rs — system overview
+        </div>
+        <div class="p-7 font-mono text-[12px] leading-[1.5] text-[#a6adc8]">
+<pre class="whitespace-pre">
+<span class="text-[#313244]">┌────────────────────────────────────┐</span>
+<span class="text-[#313244]">│</span>  <span class="text-[#fab387]">OS Clipboard Events</span>               <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">│</span>  <span class="text-[#313244]">pasteboard · x11 · wl-clipboard</span>  <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">└──────────────┬─────────────────────┘</span>
+               <span class="text-[#313244]">│</span>
+               <span class="text-[#313244]">▼</span>
+<span class="text-[#313244]">┌────────────────────────────────────┐</span>
+<span class="text-[#313244]">│</span>  <span class="text-[#cdd6f4]">clipd daemon</span>                      <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">│</span>                                    <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">│</span>  <span class="text-[#fab387]">watcher</span>  <span class="text-[#cba6f7]">store</span>  <span class="text-[#89b4fa]">ai</span>    <span class="text-[#94e2d5]">sync</span>       <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">│</span>  <span class="text-[#fab387]">hotkeys</span>  <span class="text-[#cba6f7]">query</span>  <span class="text-[#89b4fa]">onnx</span>  <span class="text-[#a6e3a1]">mcp</span>        <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">│</span>                                    <span class="text-[#313244]">│</span>
+<span class="text-[#313244]">└──┬────┬────┬────┬────┬────────────┘</span>
+   <span class="text-[#313244]">│</span>    <span class="text-[#313244]">│</span>    <span class="text-[#313244]">│</span>    <span class="text-[#313244]">│</span>    <span class="text-[#313244]">│</span>
+   <span class="text-[#313244]">▼</span>    <span class="text-[#313244]">▼</span>    <span class="text-[#313244]">▼</span>    <span class="text-[#313244]">▼</span>    <span class="text-[#313244]">▼</span>
+  <span class="text-[#fab387]">TUI</span>  <span class="text-[#cba6f7]">CLI</span>  <span class="text-[#89b4fa]">ST</span>  <span class="text-[#a6e3a1]">VSC</span>  <span class="text-[#94e2d5]">nvim</span>
+</pre>
+        </div>
+      </div>
+
+      <!-- Tech Stack -->
+      <div class="flex flex-col gap-2">
+        <div class="stack-item"><span class="stack-label text-[#fab387]">CORE</span><span class="stack-value">Rust · arboard · rusqlite</span></div>
+        <div class="stack-item"><span class="stack-label text-[#cba6f7]">STORE</span><span class="stack-value">SQLite · FTS5 · WAL mode</span></div>
+        <div class="stack-item"><span class="stack-label text-[#89b4fa]">AI</span><span class="stack-value">ONNX Runtime · GLiNER2 · MiniLM</span></div>
+        <div class="stack-item"><span class="stack-label text-[#94e2d5]">TUI</span><span class="stack-value">ratatui · crossterm</span></div>
+        <div class="stack-item"><span class="stack-label text-[#a6e3a1]">IPC</span><span class="stack-value">Unix socket · MCP server</span></div>
+        <div class="stack-item"><span class="stack-label text-[#f9e2af]">SYNC</span><span class="stack-value">AES-256-GCM · self-hostable</span></div>
+        <div class="stack-item"><span class="stack-label text-[#f38ba8]">HOTKEYS</span><span class="stack-value">global-hotkey · Accessibility API</span></div>
+        <div class="stack-item"><span class="stack-label text-[#f5c2e7]">PLUGINS</span><span class="stack-value">Python · TypeScript · Lua shims</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 18px;
+    background: #1e1e2e;
+    border: 1px solid #313244;
+    border-radius: 8px;
+    transition: border-color 0.2s;
+  }
+  .stack-item:hover {
+    border-color: #45475a;
+  }
+  .stack-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    min-width: 70px;
+    font-weight: 600;
+  }
+  .stack-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: #a6adc8;
+    font-weight: 400;
+  }
+</style>

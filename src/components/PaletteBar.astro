@@ -1,0 +1,17 @@
+---
+interface Props {
+  reverse?: boolean;
+}
+const { reverse = false } = Astro.props;
+const colors = [
+  'bg-ctp-red', 'bg-ctp-peach', 'bg-ctp-yellow', 'bg-ctp-green',
+  'bg-ctp-teal', 'bg-ctp-blue', 'bg-ctp-lavender', 'bg-ctp-mauve',
+  'bg-ctp-pink', 'bg-ctp-flamingo', 'bg-ctp-rosewater',
+];
+const ordered = reverse ? [...colors].reverse() : colors;
+---
+<div class="flex h-[3px] w-full overflow-hidden group">
+  {ordered.map((c) => (
+    <span class={`flex-1 transition-all duration-300 group-hover:odd:flex-[2] ${c}`} />
+  ))}
+</div>

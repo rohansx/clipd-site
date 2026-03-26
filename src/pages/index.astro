@@ -1,9 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import PaletteBar from '../components/PaletteBar.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero';
+import SellLine from '../components/SellLine';
+import DemoTerminal from '../components/DemoTerminal';
+import Features from '../components/Features';
+import Hotkeys from '../components/Hotkeys.astro';
+import Compare from '../components/Compare.astro';
+import Architecture from '../components/Architecture.astro';
+import CTA from '../components/CTA';
+import Footer from '../components/Footer.astro';
 ---
 <Layout title="clipd — The AI Clipboard Daemon for Developers">
+  <PaletteBar />
+  <Nav />
   <main>
-    <h1 class="text-ctp-peach text-4xl font-mono p-8">clipd</h1>
-    <p class="text-ctp-subtext0 font-body p-8">Landing page coming soon.</p>
+    <Hero client:load />
+    <SellLine client:visible />
+    <DemoTerminal client:visible />
+    <Features client:visible />
+    <Hotkeys />
+    <Compare />
+    <Architecture />
+    <CTA client:visible />
   </main>
+  <Footer />
+  <PaletteBar reverse />
 </Layout>

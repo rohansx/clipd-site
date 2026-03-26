@@ -3,7 +3,6 @@ import React, {
   useState,
   useEffect,
   useRef,
-  RefObject,
   useCallback,
 } from "react";
 
@@ -33,7 +32,7 @@ export const StarsBackground: React.FC<StarBackgroundProps> = ({
   className,
 }) => {
   const [stars, setStars] = useState<StarProps[]>([]);
-  const canvasRef: RefObject<HTMLCanvasElement | null> =
+  const canvasRef: React.RefObject<HTMLCanvasElement | null> =
     useRef<HTMLCanvasElement>(null);
 
   const generateStars = useCallback(
